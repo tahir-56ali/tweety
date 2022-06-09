@@ -32,7 +32,21 @@
 
         <section class="px-8">
             <main class="container mx-auto">
-                @yield('content')
+                <div class="lg:flex">
+                    <div class="lg:w-1/4">
+                        @include('_sidebar-links')
+                    </div>
+
+                    <div class="lg:flex-1 lg:mx-10 lg:mb-10" style="max-width: 700px;">
+                        @yield('content')
+                    </div>
+
+                    <div class="lg:w-1/4">
+                        @auth()
+                            @include('_friends-list')
+                        @endauth
+                    </div>
+                </div>
             </main>
         </section>
     </div>

@@ -11,6 +11,10 @@
 |
 */
 
+use App\User;
+
+//DB::listen(function ($query) { var_dump($query->sql); });
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -19,5 +23,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/tweets', 'TweetController@index')->name('home');
     Route::post('/tweets', 'TweetController@store');
 });
+
+Route::get('/profiles/{user}', 'ProfilesController@show')->name('profile');
 
 Auth::routes();
