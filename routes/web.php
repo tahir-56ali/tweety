@@ -19,13 +19,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/profiles/{user}', 'ProfilesController@show')->name('profile');
+
 Route::middleware('auth')->group(function () {
     Route::get('/tweets', 'TweetController@index')->name('home');
     Route::post('/tweets', 'TweetController@store');
     Route::post('/profiles/{user}/follow', 'FollowsController@store');
     Route::get('/profiles/{user}/edit', 'ProfilesController@edit')->middleware('can:edit,user');
+    Route::patch('/profiles/{user}', 'ProfilesController@update');
 });
 
-Route::get('/profiles/{user}', 'ProfilesController@show')->name('profile');
 
 Auth::routes();
