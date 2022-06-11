@@ -17,9 +17,9 @@
         </div>
 
         <div class="flex justify-between items-center mb-6">
-            <div>
-                <h2>{{ $user->name }}</h2>
-                <p>Joined {{ $user->created_at->diffForHumans() }}</p>
+            <div style="max-width: 270px;">
+                <h2 class="font-bold text-2xl mb-0">{{ $user->name }}</h2>
+                <p class="text-sm">Joined {{ $user->created_at->diffForHumans() }}</p>
             </div>
 
             <div class="flex">
@@ -45,6 +45,6 @@
     </header>
 
     @include('_timeline', [
-        'tweets' => $user->tweets
+        'tweets' => $tweets
     ])
 @endcomponent
